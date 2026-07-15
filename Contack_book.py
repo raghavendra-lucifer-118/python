@@ -2,7 +2,8 @@
 Contacts = []
 
 # Functions for each action
-# Adding a contact
+# Adding new contact
+
 def addContact():
     name = input("Enter Name: ")
     phno = int(input("Enter Phone Number: "))
