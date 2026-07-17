@@ -1,15 +1,15 @@
 # Setting contacts structure
-Contacts = []
+Contacts : list[dict] = []
 
 # Functions for each action
 # Adding new contact
 
 def addContact():
-    name = input("Enter Name: ")
-    phno = int(input("Enter Phone Number: "))
-    email = input("Enter Email: ")
+    name : str = input("Enter Name: ")
+    phno : int = int(input("Enter Phone Number: "))
+    email : str = input("Enter Email: ")
     
-    contact = {"name" : name,
+    contact : dict = {"name" : name,
                "phno" : phno,
                "mail" : email}
     
@@ -37,8 +37,8 @@ def searchContact():
 
 # Updating the contact
 def updateContact():
-    searchcname = input("Enter Name: ")
-    updatecnumber = int(input("Enter New Phone Number: "))
+    searchcname : str = input("Enter Name: ")
+    updatecnumber : int = int(input("Enter New Phone Number: "))
     for c in Contacts:
         if (searchcname == c["name"]):
             c["phno"] = updatecnumber   
@@ -46,7 +46,7 @@ def updateContact():
 
 # Deleting the contact
 def deleteContact():
-    searchcname = input("Enter Name: ")
+    searchcname : str = input("Enter Name: ")
     for c in Contacts:
         if (searchcname == c["name"]):
             Contacts.remove(c)  
@@ -57,23 +57,23 @@ def deleteContact():
 
 # Sort all contacts
 def sortContacts():
-    sorted_contact = sorted(Contacts , key=lambda c:c["name"].lower())
+    sorted_contact : list[dict] = sorted(Contacts , key=lambda c:c["name"].lower())
     for c in sorted_contact:
         viewContact(c)
 
 
        
-# Menu for options
-print("""1.Add Contact
+# While loop for indefinite inputs until chosen exit            
+while(True):
+    # Menu for options
+    print("""1.Add Contact
 2.View Contacts
 3.Search Contact
 4.Update Contact
 5.Delete Contact
 6.Sort Contact
-7.exit""")       
-            
-while(True):
-    choice = int(input("Enter Choice: "))
+7.exit""")   
+    choice : int = int(input("Enter Choice: "))
     match(choice):
         case 1 : addContact()
         case 2 : viewContacts()
